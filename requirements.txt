@@ -1,0 +1,5 @@
+onnx==1.10.0
+onnxruntime==1.10.0
+nvidia-tensorrt==8.2.1.8
+torch==1.10.0+cu113
+torch-tensorrt==1.0.0
