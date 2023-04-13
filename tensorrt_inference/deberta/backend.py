@@ -3,6 +3,7 @@ import os, sys
 import torch
 import tensorrt as trt
 import numpy as np
+import pycuda.autoinit # without this, "LogicError: explicit_context_dependent failed: invalid device context - no currently active context?"
 import pycuda.driver as cuda
 
 

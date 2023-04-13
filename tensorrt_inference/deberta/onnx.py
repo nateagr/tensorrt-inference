@@ -9,7 +9,7 @@ import onnx_graphsurgeon as gs
 
 def convert_to_onnx(
     output_file: str,
-    model: torch.nn.module,
+    model: torch.nn.Module,
     seq_len: int = 77,
     batch_size: int = 512
 ):
