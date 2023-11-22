@@ -6,6 +6,8 @@ import onnx
 from onnx import TensorProto
 import onnx_graphsurgeon as gs
 
+from tensorrt_inference.onnx import check_model
+
 
 def convert_to_onnx(
     output_file: str,
@@ -30,7 +32,7 @@ def convert_to_onnx(
                         (input_ids, attention_mask), # model inputs
                         tmp_onnx_file,
                         export_params=True,
-                        opset_version=13,
+                        opset_version=17,
                         do_constant_folding=True,
                         input_names = input_names,
                         output_names = output_names,
@@ -40,7 +42,7 @@ def convert_to_onnx(
         graph = _remove_uint8_cast(graph)
         graph.cleanup().toposort()
         onnx.save_model(gs.export_onnx(graph), output_file)
-        _check_model(output_file)
+        check_model(output_file)
 
 
 def _remove_uint8_cast(graph):
@@ -61,11 +63,3 @@ def _remove_uint8_cast(graph):
         # node.attrs["to"] = TensorProto.INT64
 
     return graph
-
-        
-def _check_model(model_name):
-    # Load the ONNX model
-    model = onnx.load(model_name)
-
-    # Check that the model is well formed
-    onnx.checker.check_model(model)

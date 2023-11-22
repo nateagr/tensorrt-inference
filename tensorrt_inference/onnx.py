@@ -5,6 +5,14 @@ from torch import nn
 import onnx
 
 
+def check_model(model_name):
+    # Load the ONNX model
+    model = onnx.load(model_name)
+
+    # Check that the model is well formed
+    onnx.checker.check_model(model)
+
+
 def convert_to_onnx(
     pytorch_model: nn.Module,
     onnx_output_path: str,
