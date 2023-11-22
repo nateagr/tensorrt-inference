@@ -5,7 +5,7 @@ pycuda==2020.1
 transformers==4.27.4
 onnx==1.15.0
 onnxruntime==1.10.0
-onnx-graphsurgeon==0.3.26 # --index-url https://pypi.ngc.nvidia.com
+onnx-graphsurgeon==0.3.27 # --index-url https://pypi.ngc.nvidia.com
 onnxoptimizer==0.3.10
 nvidia-pyindex==1.0.9
 pycuda==2020.1
